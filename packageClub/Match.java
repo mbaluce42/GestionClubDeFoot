@@ -6,7 +6,7 @@ public class Match {
     private String adversaire; 
     private String date;
 
-    Match(final String lieu,final String adversaire, final String date )
+    public Match(final String lieu,final String adversaire, final String date )
     {
         setLieu(lieu);
         setAdversaire(adversaire);

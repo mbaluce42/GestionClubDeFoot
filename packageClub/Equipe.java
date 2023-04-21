@@ -6,8 +6,9 @@ import java.util.List;
 import packagePersonne.Entraineur;
 import packagePersonne.Joueur;
 
+
 public class Equipe{
-     
+  
     private String categorie;
     private List<Joueur> joueurs;
     private List<Entraineur> entraineurs;

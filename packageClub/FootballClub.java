@@ -5,8 +5,16 @@ import java.util.List;
 
 public class FootballClub {
     
-    
+    private static FootballClub instance;
     private List<Equipe> equipes;
+
+    public static FootballClub getInstance() {
+        if(instance==null)
+        {
+            instance= new FootballClub();
+        }
+        return instance;
+    }
 
     public FootballClub() {
         equipes = new ArrayList<>();
@@ -23,7 +31,6 @@ public class FootballClub {
     public List<Equipe> getEquipe() {
         return equipes;
     }
-
 
 }
 
