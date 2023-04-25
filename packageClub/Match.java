@@ -33,5 +33,11 @@ public class Match {
     public String getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+    return "lieu=" + getLieu()+ ", adversaire=" + getAdversaire() +", date=" + getDate() ;
+}
+
     
 }

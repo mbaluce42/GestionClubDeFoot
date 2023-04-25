@@ -1,15 +1,27 @@
 package packagePersonne;
 
+import java.util.List;
+
+import packageException.PersonneException;
+
 public class Entraineur extends Personne {
 
     private String diplome;
-    private int categorie; 
+    private List<String> diplomes; 
 
-    public Entraineur(final String nom, final String prenom, final String naiss , final String dipl,final int catEntraineur)
+    public List<String> getDiplomes() {
+        return diplomes;
+    }
+
+    public void setDiplomes(List<String> diplomes) {
+        this.diplomes = diplomes;
+    }
+
+    public Entraineur(final String nom, final String prenom, final String naiss , final String dipl) throws PersonneException
     {
         super(nom,prenom,naiss);
         setDiplome(dipl);
-        setCategorie(catEntraineur);
+        //setCategorie(catEntraineur);
     }
 
     public void setDiplome(final String diplome)
@@ -29,5 +41,12 @@ public class Entraineur extends Personne {
     {
         return categorie;
     }
+
+    @Override
+    public String toString() 
+    {
+        return super.toString() + ", diplome=" + getDiplome() + ", categorie=" + getCategorie();
+    }
+    
     
 }

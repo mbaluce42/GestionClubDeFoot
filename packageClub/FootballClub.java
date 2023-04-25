@@ -32,5 +32,18 @@ public class FootballClub {
         return equipes;
     }
 
+    public String toString() 
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("FootballClub : \n");
+        sb.append("Nombre d'équipes : " + equipes.size() + "\n");
+    
+        for (Equipe equipe : equipes) {
+            sb.append(equipe.toString() + "\n" );
+        }
+        return sb.toString();
+    }
+    
+
 }
 

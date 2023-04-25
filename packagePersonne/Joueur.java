@@ -1,10 +1,12 @@
 package packagePersonne;
 
+import packageException.PersonneException;
+
 public class Joueur extends Personne {
     
     private String poste;
 
-    public Joueur(final String nom, final String prenom, final String naiss , final String position)
+    public Joueur(final String nom, final String prenom, final String naiss , final String position) throws PersonneException
     {
         super(nom,prenom,naiss);
         setPoste(position);
@@ -19,5 +21,12 @@ public class Joueur extends Personne {
     {
         return poste;
     }
+
+    @Override
+    public String toString() 
+    {
+        return super.toString() + "poste=" + getPoste() ;
+    }
+
 
 }

@@ -64,7 +64,31 @@ public class Equipe{
         return matches;
     }
 
-   
-    
+    @Override
+    public String toString() 
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Catégorie de l'equipe: " + "U" + getCategorie() + " : \n");
+        sb.append("Nombre de joueurs : " + joueurs.size() + "\n");
+        sb.append("Nombre d'entraîneurs : " + entraineurs.size() + "\n");
+        sb.append("Nombre de matchs : " + matches.size() + "\n");
+        
+        sb.append("Liste des joueurs : \n");
+        for (Joueur joueur : joueurs) {
+            sb.append("- " + joueur.toString()+"\n");
+        }
+        
+        sb.append("Liste des entraîneurs : \n");
+        for (Entraineur entraineur : entraineurs) {
+            sb.append("- "+ entraineur.toString() +"\n");
+        }
+        
+        sb.append("Liste des matchs : \n");
+        for (Match match : matches) {
+            sb.append("- "+ match.toString() + "\n");
+        }
+        return sb.toString();
+    }
+
 }
 

@@ -3,13 +3,14 @@ import java.util.Scanner;
 import packageClub.Equipe;
 import packageClub.FootballClub;
 import packageClub.Match;
+import packageException.PersonneException;
 //import packageClub.Match;
 import packagePersonne.Entraineur;
 import packagePersonne.Joueur;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PersonneException {
         try (Scanner scanner = new Scanner(System.in)) {
             // Création de l'objet FootballClub
             FootballClub club = FootballClub.getInstance();
@@ -67,10 +68,9 @@ public class Main {
             String DateNaisEntraineur = scanner.nextLine();
             System.out.print("diplome de l'entraîneur : ");
             String DiplomeEntraineur = scanner.nextLine();
-            System.out.print("Categorie de l'entraîneur : ");
-            int CatEntraineur = scanner.nextInt();
+            
             scanner.nextLine();
-            Entraineur entraineur = new Entraineur(nomEntraineur, prenomEntraineur,DateNaisEntraineur,DiplomeEntraineur,CatEntraineur);
+            Entraineur entraineur = new Entraineur(nomEntraineur, prenomEntraineur,DateNaisEntraineur,DiplomeEntraineur);
             equipe2.ajouterEntraineur(entraineur);
 
             // Ajout d'un match pour l'équipe 1
