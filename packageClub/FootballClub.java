@@ -1,12 +1,11 @@
 package packageClub;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FootballClub {
     
     private static FootballClub instance;
-    private List<Equipe> equipes;
+    private ArrayList<Equipe> equipes;
 
     public static FootballClub getInstance() {
         if(instance==null)
@@ -17,7 +16,7 @@ public class FootballClub {
     }
 
     public FootballClub() {
-        equipes = new ArrayList<>();
+        this.equipes = new ArrayList<>();
     }
 
     public void ajouterEquipe(Equipe equipe) {
@@ -28,7 +27,7 @@ public class FootballClub {
         equipes.remove(equipe);
     }
 
-    public List<Equipe> getEquipe() {
+    public ArrayList<Equipe> getEquipe() {
         return equipes;
     }
 

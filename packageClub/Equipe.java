@@ -1,7 +1,6 @@
 package packageClub;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import packagePersonne.Entraineur;
 import packagePersonne.Joueur;
@@ -10,15 +9,15 @@ import packagePersonne.Joueur;
 public class Equipe{
   
     private String categorie;
-    private List<Joueur> joueurs;
-    private List<Entraineur> entraineurs;
-    private List<Match> matches;
+    private ArrayList<Joueur> joueurs;
+    private ArrayList<Entraineur> entraineurs;
+    private ArrayList<Match> matches;
 
     public Equipe(final String categorie ) {
         setCategorie(categorie);
-        joueurs = new ArrayList<>();
-        entraineurs = new ArrayList<>();
-        matches = new ArrayList<>();
+        this.joueurs = new ArrayList<>();
+        this.entraineurs = new ArrayList<>();
+        this.matches = new ArrayList<>();
     }
 
     public void ajouterJoueur(Joueur joueur) {
@@ -52,15 +51,15 @@ public class Equipe{
         return categorie;
     }
 
-    public List<Joueur> getJoueurs() {
+    public ArrayList<Joueur> getJoueurs() {
         return joueurs;
     }
 
-    public List<Entraineur> getEntraineurs() {
+    public ArrayList<Entraineur> getEntraineurs() {
         return entraineurs;
     }
 
-    public List<Match> getMatches() {
+    public ArrayList<Match> getMatches() {
         return matches;
     }
 

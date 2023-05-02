@@ -1,102 +1,155 @@
-import java.util.Scanner;
-
-import packageClub.Equipe;
-import packageClub.FootballClub;
-import packageClub.Match;
-import packageException.PersonneException;
-//import packageClub.Match;
-import packagePersonne.Entraineur;
-import packagePersonne.Joueur;
+import packagePersonne.*;
+import packageClub.*;
+import packageException.*;
 
 public class Main {
 
     public static void main(String[] args) throws PersonneException {
-        try (Scanner scanner = new Scanner(System.in)) {
-            // Création de l'objet FootballClub
-            FootballClub club = FootballClub.getInstance();
+        testPersonne();
+        testEntraineur();
+        testJoueur();
+        
+        testEquipe();
+        testMatch();
+        testFootballClub();
+    }
 
-            // Création de deux équipes
-            System.out.println("Création de deux équipes :");
+    
+    public static void testPersonne() 
+    {
 
-            System.out.print("Catégorie de l'équipe 1 : ");
-            String categorieEquipe1 = scanner.nextLine();
-            Equipe equipe1 = new Equipe(categorieEquipe1);
-            club.ajouterEquipe(equipe1);
+        //Personne personne1 = new Personne();
+    }
 
-            System.out.print("Catégorie de l'équipe 2 : ");
-            String categorieEquipe2 = scanner.nextLine();
-            Equipe equipe2 = new Equipe(categorieEquipe2);
-            club.ajouterEquipe(equipe2);
+    private static void testEntraineur() throws PersonneException
+    {
+        // Création d'une instance de la classe Entraineur avec le constructeur vide
+        Entraineur entraineur1 = new Entraineur();
+        
+        // Utilisation des setters pour initialiser les attributs
+        entraineur1.setNom("mourinho");
+        entraineur1.setPrenom("jose");
+        entraineur1.setDateNaiss("26/01/1963");
+        entraineur1.setDiplome("UEFA Pro");
+        
+        // Utilisation de la méthode toString pour afficher les attributs de l'objet
+        System.out.println("entraineur3:" +entraineur1.toString());
+        
+        // Création d'une instance de la classe Entraineur avec le constructeur paramétré
+        Entraineur entraineur2 = new Entraineur("belek", "wasim", "10/04/2000", "UEFA B");
+        System.out.println("entraineur3: "+entraineur2.toString());
 
-            // Création de deux joueurs pour l'équipe 1
-            System.out.println("\nCréation de deux joueurs pour l'équipe 1 :");
+        //creation d'un Entraineur avec le contructeur par defaut
+        Entraineur entraineur3 = new Entraineur();
+        System.out.println("entraineur3:" + entraineur3.toString());
 
-            System.out.print("Nom du joueur 1 : ");
-            String nomJoueur1 = scanner.nextLine();
-            System.out.print("Prénom du joueur 1 : ");
-            String prenomJoueur1 = scanner.nextLine();
-            System.out.print("date de naissance du joueur 1 : ");
-            String dateJoueur1 = scanner.nextLine();
-            System.out.print("Position de predilection du joueur 1 : ");
-            String positionJoueur1 = scanner.nextLine();
+    }
 
-            scanner.nextLine(); // Pour consommer le retour à la ligne
-
-            Joueur joueur1 = new Joueur(nomJoueur1, prenomJoueur1,dateJoueur1 ,positionJoueur1);
-            equipe1.ajouterJoueur(joueur1);
-
-            System.out.print("Nom du joueur 2 : ");
-            String nomJoueur2 = scanner.nextLine();
-            System.out.print("Prénom du joueur 2 : ");
-            String prenomJoueur2 = scanner.nextLine();
-            System.out.print("date de naissance du joueur 2 : ");
-            String dateJoueur2 = scanner.nextLine();
-            System.out.print("Position de predilection du joueur 2 : ");
-            String positionJoueur2 = scanner.nextLine();
-            scanner.nextLine(); // Pour consommer le retour à la ligne
-            Joueur joueur2 = new Joueur(nomJoueur2, prenomJoueur2, dateJoueur2,positionJoueur2);
-            equipe1.ajouterJoueur(joueur2);
-
-            // Création d'un entraîneur pour l'équipe 2
-            System.out.println("\nCréation d'un entraîneur pour l'équipe 2 :");
-
-            System.out.print("Nom de l'entraîneur : ");
-            String nomEntraineur = scanner.nextLine();
-            System.out.print("Prénom de l'entraîneur : ");
-            String prenomEntraineur = scanner.nextLine();
-            System.out.print("DateNaiss de l'entraîneur : ");
-            String DateNaisEntraineur = scanner.nextLine();
-            System.out.print("diplome de l'entraîneur : ");
-            String DiplomeEntraineur = scanner.nextLine();
-            
-            scanner.nextLine();
-            Entraineur entraineur = new Entraineur(nomEntraineur, prenomEntraineur,DateNaisEntraineur,DiplomeEntraineur);
-            equipe2.ajouterEntraineur(entraineur);
-
-            // Ajout d'un match pour l'équipe 1
-            System.out.println("\nAjout d'un match pour l'équipe 1 :");
-
-
-            System.out.print("Lieu du match : ");
-            String lieuMatch = scanner.nextLine();
-            System.out.print("Adversaire : ");
-            String adversaireMatch = scanner.nextLine();
-            System.out.print("Date du match (jj/mm/aaaa) : ");
-            String dateMatch = scanner.nextLine();
-            scanner.nextLine();
-            //System.out.print("Résultat (ex : 3-1) : ");
-            //String resultatMatch = scanner.nextLine();
-            Match match1 = new Match(lieuMatch, adversaireMatch, dateMatch);
-            equipe1.ajouterMatch(match1);
-   
-            // Affichage des informations des équipes
-            System.out.println("\nInformations des équipes :");
-   
-            System.out.println("Equipe 1 : " + equipe1);
-            System.out.println("Equipe 2 : " + equipe2);
-            club.ajouterEquipe(equipe2);
-            club.ajouterEquipe(equipe1);
+    public static void testJoueur() throws PersonneException 
+    {
+        Joueur joueur1 = new Joueur();
+        
+        joueur1.setNom("Dupont");
+        joueur1.setPrenom("Jean");
+        joueur1.setDateNaiss("12/05/1990");
+        joueur1.setPoste("Attaquant");
+        
+        System.out.println(joueur1.toString());
+        
+        try {
+            Joueur joueur2 = new Joueur("mbaya", "luce-emmanuel", "23/09/2002", "Défenseur");
+            System.out.println(joueur2.toString());
+        } catch (PersonneException e) {
+            e.printStackTrace();
         }
+    
+    }
+
+    public static void testEquipe() throws PersonneException 
+    {
+        Equipe equipe = new Equipe("1ere");
+        
+        // Ajout de joueurs
+        Joueur joueur1 = new Joueur("tortolani", "guillaume", "22/09/2002","Attaquant");
+        Joueur joueur2= new Joueur("matuidi", "charo", "06/04/1980", "Millieu");
+        Joueur joueur3 = new Joueur("mbaya", "luce-emmanuel", "23/09/2002", "Défenseur");
+        equipe.ajouterJoueur(joueur1);
+        equipe.ajouterJoueur(joueur2);
+        equipe.ajouterJoueur(joueur3);
+
+        
+        // Ajout d'entraîneurs
+        Entraineur entraineur1 = new Entraineur("mourinho", "jose", "26/01/1963", "UEFA Pro");
+        Entraineur entraineur2 = new Entraineur("Ancelotti", "Carlo", "Carlo Ancelotti,10/06/1959", "UEFA Pro");
+        equipe.ajouterEntraineur(entraineur1);
+        equipe.ajouterEntraineur(entraineur2);
+
+        // Ajout de matchs
+        Match match1 = new Match("Stade 1", "Équipe A", "2022-06-01");
+        Match match2 = new Match("Stade 2", "FC Mon jardin", "2023-06-08");
+        equipe.ajouterMatch(match1);
+        equipe.ajouterMatch(match2);
+        
+        // Affichage des informations de l'équipe
+        System.out.println(equipe.toString());
+        
+        // Suppression d'un joueur
+        equipe.supprimerJoueur(joueur1);
+        equipe.supprimerMatch(match2);
+        equipe.supprimerEntraineur(entraineur2);
+
+        System.out.println("Après suppression d'un joueur, match et entraineur:");
+        System.out.println(equipe.toString());
+        
+    }
+
+    
+
+    public static void testMatch() 
+    {
+        Match match1 = new Match("Stade des martir", "TP Mazembe", "2023-05-17");
+        System.out.println(match1.toString());
+        
+        match1.setLieu("Stade De France");
+        match1.setAdversaire("PSG");
+        match1.setDate("2023-06-01");
+        System.out.println(match1.toString());
+    }
+
+    public static void testFootballClub() throws PersonneException 
+    {
+        Equipe equipe1= new Equipe("1ere");
+        
+        // Ajout de joueurs
+        Joueur joueur1 = new Joueur("tortolani", "guillaume", "22/09/2002","Attaquant");
+        Joueur joueur2= new Joueur("matuidi", "charo", "06/04/1980", "Millieu");
+        Joueur joueur3 = new Joueur("mbaya", "luce-emmanuel", "23/09/2002", "Défenseur");
+        equipe1.ajouterJoueur(joueur1);
+        equipe1.ajouterJoueur(joueur2);
+        equipe1.ajouterJoueur(joueur3);
+
+        
+        // Ajout d'entraîneurs
+        Entraineur entraineur1 = new Entraineur("mourinho", "jose", "26/01/1963", "UEFA Pro");
+        Entraineur entraineur2 = new Entraineur("Ancelotti", "Carlo", "Carlo Ancelotti,10/06/1959", "UEFA Pro");
+        equipe1.ajouterEntraineur(entraineur1);
+        equipe1.ajouterEntraineur(entraineur2);
+
+        // Ajout de matchs
+        Match match1 = new Match("Stade 1", "Équipe A", "2022-06-01");
+        Match match2 = new Match("Stade 2", "FC Mon jardin", "2023-06-08");
+        equipe1.ajouterMatch(match1);
+        equipe1.ajouterMatch(match2);
+
+        // Ajout de l'équipe au club
+        FootballClub club = FootballClub.getInstance();
+        club.ajouterEquipe(equipe1);
+
+        // Affichage du club
+        System.out.println("Club: "+club.toString());
+
+        FootballClub clubB = FootballClub.getInstance();
+        System.out.println("ClubB: "+clubB.toString());
+
     }
 }
-    

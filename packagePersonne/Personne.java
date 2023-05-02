@@ -15,6 +15,14 @@ public abstract class Personne {
         setPrenom(p);
         setDateNaiss(nais);
     }
+
+    public Personne() throws PersonneException
+    {
+        setNom("vide");
+        setPrenom("vide");
+        setDateNaiss("99/99/9999");
+
+    }
     public void setNom(String n) throws PersonneException
     {
         if(Tool.contientChiffres(n)==true){ throw new PersonneException("Le nom ne doit pas contenir de chiffres");}

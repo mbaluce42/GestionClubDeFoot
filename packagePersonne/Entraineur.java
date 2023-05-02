@@ -1,51 +1,60 @@
 package packagePersonne;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import packageException.PersonneException;
 
 public class Entraineur extends Personne {
 
-    private String diplome;
-    private List<String> diplomes; 
+    private ArrayList<String> diplomes; //4
 
-    public List<String> getDiplomes() {
-        return diplomes;
-    }
-
-    public void setDiplomes(List<String> diplomes) {
-        this.diplomes = diplomes;
-    }
+    
 
     public Entraineur(final String nom, final String prenom, final String naiss , final String dipl) throws PersonneException
     {
         super(nom,prenom,naiss);
+        this.diplomes = new ArrayList<String>(4);
         setDiplome(dipl);
         //setCategorie(catEntraineur);
     }
 
-    public void setDiplome(final String diplome)
+    public Entraineur() throws PersonneException
     {
-        this.diplome=diplome;
-    }
-    public String getDiplome()
-    {
-        return diplome;
+        super();
+        this.diplomes = new ArrayList<String>(4);
+        setDiplome("vide");
     }
 
-    public void setCategorie(final int categorie)
+    
+
+    public void setDiplome(final String diplome) {
+        this.diplomes.add(diplome);
+    }
+
+    public ArrayList<String> getDiplome() {
+        return diplomes;
+    }
+
+    /*public void setCategorie(final int categorie)
     {
         this.categorie=categorie;
     }
     public int getCategorie()
     {
         return categorie;
-    }
+    }*/
 
     @Override
     public String toString() 
     {
-        return super.toString() + ", diplome=" + getDiplome() + ", categorie=" + getCategorie();
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(" Liste des diplomes : \n");
+        for (String dipl : diplomes) {
+            sb.append("- " + dipl +"\n");
+        }
+
+        return super.toString() + ","+ sb.toString() /*+ ", categorie=" + getCategorie()*/;
     }
     
     
