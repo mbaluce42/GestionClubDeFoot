@@ -23,6 +23,7 @@ public class Main {
 
     private static void testEntraineur() throws PersonneException
     {
+        System.out.println("testEntraineur:\n\n");
         // Création d'une instance de la classe Entraineur avec le constructeur vide
         Entraineur entraineur1 = new Entraineur();
         
@@ -43,10 +44,13 @@ public class Main {
         Entraineur entraineur3 = new Entraineur();
         System.out.println("entraineur3:" + entraineur3.toString());
 
+        System.out.println("\n--------------------------------------------------------");
+
     }
 
     public static void testJoueur() throws PersonneException 
     {
+        System.out.println("testJoueur:\n\n");
         Joueur joueur1 = new Joueur();
         
         joueur1.setNom("Dupont");
@@ -62,11 +66,15 @@ public class Main {
         } catch (PersonneException e) {
             e.printStackTrace();
         }
+        System.out.println("\n--------------------------------------------------------");
+
     
     }
 
     public static void testEquipe() throws PersonneException 
     {
+        System.out.println("testEquipe:\n\n");
+        
         Equipe equipe = new Equipe("1ere");
         
         // Ajout de joueurs
@@ -80,12 +88,12 @@ public class Main {
         
         // Ajout d'entraîneurs
         Entraineur entraineur1 = new Entraineur("mourinho", "jose", "26/01/1963", "UEFA Pro");
-        Entraineur entraineur2 = new Entraineur("Ancelotti", "Carlo", "Carlo Ancelotti,10/06/1959", "UEFA Pro");
+        Entraineur entraineur2 = new Entraineur("Ancelotti", "Carlo", "10/06/1959", "UEFA Pro");
         equipe.ajouterEntraineur(entraineur1);
         equipe.ajouterEntraineur(entraineur2);
 
         // Ajout de matchs
-        Match match1 = new Match("Stade 1", "Équipe A", "2022-06-01");
+        Match match1 = new Match("Stade 1", "Equipe A", "2022-06-01");
         Match match2 = new Match("Stade 2", "FC Mon jardin", "2023-06-08");
         equipe.ajouterMatch(match1);
         equipe.ajouterMatch(match2);
@@ -98,8 +106,11 @@ public class Main {
         equipe.supprimerMatch(match2);
         equipe.supprimerEntraineur(entraineur2);
 
-        System.out.println("Après suppression d'un joueur, match et entraineur:");
+        System.out.println("Apres suppression d'un joueur, match et entraineur:");
         System.out.println(equipe.toString());
+
+        System.out.println("\n--------------------------------------------------------");
+
         
     }
 
@@ -107,6 +118,9 @@ public class Main {
 
     public static void testMatch() 
     {
+        System.out.println("testMatch:\n\n");
+
+
         Match match1 = new Match("Stade des martir", "TP Mazembe", "2023-05-17");
         System.out.println(match1.toString());
         
@@ -114,10 +128,16 @@ public class Main {
         match1.setAdversaire("PSG");
         match1.setDate("2023-06-01");
         System.out.println(match1.toString());
+
+        System.out.println("\n--------------------------------------------------------");
+
     }
 
     public static void testFootballClub() throws PersonneException 
     {
+        System.out.println("testFootballClub:\n\n");
+
+
         Equipe equipe1= new Equipe("1ere");
         
         // Ajout de joueurs
@@ -131,7 +151,7 @@ public class Main {
         
         // Ajout d'entraîneurs
         Entraineur entraineur1 = new Entraineur("mourinho", "jose", "26/01/1963", "UEFA Pro");
-        Entraineur entraineur2 = new Entraineur("Ancelotti", "Carlo", "Carlo Ancelotti,10/06/1959", "UEFA Pro");
+        Entraineur entraineur2 = new Entraineur("Ancelotti", "Carlo", "10/06/1959", "UEFA Pro");
         equipe1.ajouterEntraineur(entraineur1);
         equipe1.ajouterEntraineur(entraineur2);
 
@@ -150,6 +170,9 @@ public class Main {
 
         FootballClub clubB = FootballClub.getInstance();
         System.out.println("ClubB: "+clubB.toString());
+
+        System.out.println("\n--------------------------------------------------------");
+
 
     }
 }

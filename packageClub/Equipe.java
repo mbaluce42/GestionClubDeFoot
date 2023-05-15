@@ -1,12 +1,14 @@
 package packageClub;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.io.*;
 
 import packagePersonne.Entraineur;
 import packagePersonne.Joueur;
 
 
-public class Equipe{
+public class Equipe implements Serializable, Comparable<Equipe>{
   
     private String categorie;
     private ArrayList<Joueur> joueurs;
@@ -15,6 +17,13 @@ public class Equipe{
 
     public Equipe(final String categorie ) {
         setCategorie(categorie);
+        /*this.joueurs = new ArrayList<>();
+        this.entraineurs = new ArrayList<>();
+        this.matches = new ArrayList<>();*/
+    }
+
+    public Equipe() {
+        setCategorie("VIDE");
         this.joueurs = new ArrayList<>();
         this.entraineurs = new ArrayList<>();
         this.matches = new ArrayList<>();
@@ -22,6 +31,8 @@ public class Equipe{
 
     public void ajouterJoueur(Joueur joueur) {
         joueurs.add(joueur);
+        Collections.sort(joueurs, Joueur.ComparatorNom);
+        Collections.sort(joueurs, Joueur.ComparatorPrenom);
     }
 
     public void supprimerJoueur(Joueur joueur) {
@@ -30,6 +41,8 @@ public class Equipe{
 
     public void ajouterEntraineur(Entraineur entraineur) {
         entraineurs.add(entraineur);
+        Collections.sort(entraineurs, Entraineur.ComparatorNom);
+        Collections.sort(entraineurs, Entraineur.ComparatorPrenom);
     }
 
     public void supprimerEntraineur(Entraineur entraineur) {
@@ -67,9 +80,9 @@ public class Equipe{
     public String toString() 
     {
         StringBuilder sb = new StringBuilder();
-        sb.append("Catégorie de l'equipe: " + "U" + getCategorie() + " : \n");
+        sb.append("Categorie de l'equipe: " + "U" + getCategorie() + " : \n");
         sb.append("Nombre de joueurs : " + joueurs.size() + "\n");
-        sb.append("Nombre d'entraîneurs : " + entraineurs.size() + "\n");
+        sb.append("Nombre d'entraineurs : " + entraineurs.size() + "\n");
         sb.append("Nombre de matchs : " + matches.size() + "\n");
         
         sb.append("Liste des joueurs : \n");
@@ -77,7 +90,7 @@ public class Equipe{
             sb.append("- " + joueur.toString()+"\n");
         }
         
-        sb.append("Liste des entraîneurs : \n");
+        sb.append("Liste des entraineurs : \n");
         for (Entraineur entraineur : entraineurs) {
             sb.append("- "+ entraineur.toString() +"\n");
         }
@@ -87,6 +100,41 @@ public class Equipe{
             sb.append("- "+ match.toString() + "\n");
         }
         return sb.toString();
+    }
+    @Override
+    public boolean equals(Object o) 
+    {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Equipe)) {
+            return false;
+        }
+        Equipe other = (Equipe) o;
+        return this.categorie.equals(other.categorie) &&
+            this.joueurs.equals(other.joueurs) &&
+            this.entraineurs.equals(other.entraineurs) &&
+            this.matches.equals(other.matches);
+    }
+
+    @Override
+    public int compareTo(Equipe o) 
+    {
+        return(this.categorie.compareTo(o.getCategorie()));   
+    }
+
+    public void save(String filename) throws IOException 
+    {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(filename))) {
+            outputStream.writeObject(this);
+        }
+    }
+
+    public Equipe load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException 
+    {
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(filename))) {
+            return (Equipe) inputStream.readObject();
+        }
     }
 
 }
